@@ -1,4 +1,4 @@
-# GNU Bison fork with Elkhound algorithm
+# GNU Bison fork with alternative GLR algorithm
 
 [![Build Status](https://travis-ci.org/rofirrim/bison.svg?branch=master)](https://travis-ci.org/rofirrim/bison)
 
