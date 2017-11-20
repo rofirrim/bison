@@ -1,0 +1,17 @@
+language: cpp
+dist: trusty
+sudo: required
+cache: ccache
+compiler:
+    - gcc
+os:
+    - linux
+before_install:
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq -y autoconf automake autopoint flex graphviz help2man texinfo valgrind
+script:
+    - "git submodule update --init && ./bootstrap"
+    - "mkdir build && cd build && ../configure --prefix=$(pwd)/../install"
+    - "make -j$(nproc)"
+    - "make install"
+    - "make check"
