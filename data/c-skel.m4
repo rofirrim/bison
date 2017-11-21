@@ -20,6 +20,8 @@
 b4_glr_if(             [m4_define([b4_used_skeleton], [b4_pkgdatadir/[glr.c]])])
 b4_nondeterministic_if([m4_define([b4_used_skeleton], [b4_pkgdatadir/[glr.c]])])
 
+b4_graph_glr_if(       [m4_define([b4_used_skeleton], [b4_pkgdatadir/[graph-glr.c]])])
+
 m4_define_default([b4_used_skeleton], [b4_pkgdatadir/[yacc.c]])
 m4_define_default([b4_skeleton], ["b4_basename(b4_used_skeleton)"])
 

@@ -657,6 +657,44 @@ AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %location
 
 AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %locations %defines %name-prefix "calc" %verbose %yacc %parse-param {semantic_value *result} %parse-param {int *count}])
 AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %locations %defines %define api.prefix {calc} %verbose %yacc %parse-param {semantic_value *result} %parse-param {int *count}])
+# 
+# ----------------------- #
+# Simple GLR Calculator.  #
+# ----------------------- #
+
+AT_BANNER([[Simple Graph GLR Calculator.]])
+
+# AT_CHECK_CALC_GLR([BISON-OPTIONS])
+# ----------------------------------
+# Start a testing chunk which compiles 'calc' grammar with
+# BISON-OPTIONS and %graph-glr-parser, and performs several tests over the parser.
+m4_define([AT_CHECK_CALC_GLR],
+[AT_CHECK_CALC([%graph-glr-parser] $@)])
+
+
+AT_CHECK_CALC_GLR()
+
+# AT_CHECK_CALC_GLR([%defines])
+# AT_CHECK_CALC_GLR([%locations])
+# AT_CHECK_CALC_GLR([%name-prefix "calc"])
+# AT_CHECK_CALC_GLR([%define api.prefix {calc}])
+# AT_CHECK_CALC_GLR([%verbose])
+# AT_CHECK_CALC_GLR([%yacc])
+# AT_CHECK_CALC_GLR([%define parse.error verbose])
+# 
+# AT_CHECK_CALC_GLR([%define api.pure %locations])
+# AT_CHECK_CALC_GLR([%define parse.error verbose %locations])
+# 
+# AT_CHECK_CALC_GLR([%define parse.error verbose %locations %defines %name-prefix "calc" %verbose %yacc])
+# 
+# AT_CHECK_CALC_GLR([%debug])
+# AT_CHECK_CALC_GLR([%define parse.error verbose %debug %locations %defines %name-prefix "calc" %verbose %yacc])
+# AT_CHECK_CALC_GLR([%define parse.error verbose %debug %locations %defines %define api.prefix {calc} %define api.token.prefix {TOK_} %verbose %yacc])
+# 
+# AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %locations %defines %name-prefix "calc" %verbose %yacc])
+# 
+# AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %locations %defines %name-prefix "calc" %verbose %yacc %parse-param {semantic_value *result} %parse-param {int *count}])
+# AT_CHECK_CALC_GLR([%define api.pure %define parse.error verbose %debug %locations %defines %define api.prefix {calc} %verbose %yacc %parse-param {semantic_value *result} %parse-param {int *count}])
 
 
 # ----------------------------- #

@@ -21,6 +21,10 @@ Currently, the supported skeletons are:
 - glr.c
   A Generalized LR C parser based on Bison's LALR(1) tables.
 
+- graph-glr.c
+  A Generalized LR C parser based on Bison's LALR(1) tables that uses
+  a graph as the data structure.
+
 - glr.cc
   A Generalized LR C++ parser.  Actually a C++ wrapper around glr.c.
 

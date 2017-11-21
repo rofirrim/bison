@@ -147,6 +147,8 @@
   PERCENT_FLAG            "%<flag>"
   PERCENT_FILE_PREFIX     "%file-prefix"
   PERCENT_GLR_PARSER      "%glr-parser"
+  PERCENT_GRAPH_GLR_PARSER
+                          "%graph-glr-parser"
   PERCENT_INITIAL_ACTION  "%initial-action"
   PERCENT_LANGUAGE        "%language"
   PERCENT_NAME_PREFIX     "%name-prefix"
@@ -310,6 +312,12 @@ prologue_declaration:
     {
       nondeterministic_parser = true;
       glr_parser = true;
+    }
+| "%graph-glr-parser"
+    {
+      nondeterministic_parser = true;
+      glr_parser = true;
+      graph_glr_parser = true;
     }
 | "%initial-action" "{...}"
     {

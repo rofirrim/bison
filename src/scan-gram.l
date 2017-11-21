@@ -229,6 +229,8 @@ eqopt    ([[:space:]]*=)?
   "%fixed-output-files"             return PERCENT_YACC;
   "%initial-action"                 return PERCENT_INITIAL_ACTION;
   "%glr-parser"                     return PERCENT_GLR_PARSER;
+  "%stack-glr-parser"               return PERCENT_GLR_PARSER;
+  "%graph-glr-parser"               return PERCENT_GRAPH_GLR_PARSER;
   "%language"                       return PERCENT_LANGUAGE;
   "%left"                           return PERCENT_LEFT;
   "%lex-param"                      RETURN_PERCENT_PARAM(lex);

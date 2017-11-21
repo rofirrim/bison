@@ -22,6 +22,7 @@ dist_pkgdata_DATA =                             \
   data/c-skel.m4                                \
   data/c.m4                                     \
   data/glr.c                                    \
+  data/graph-glr.c                              \
   data/glr.cc                                   \
   data/java-skel.m4                             \
   data/java.m4                                  \

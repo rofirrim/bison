@@ -48,8 +48,13 @@ extern bool yacc_flag;                  /* for -y */
 
 extern bool glr_parser;
 
+/* GRAPH_GLR_PARSER is true if the input file says to use the Graph GLR
+   (Generalized LR using Graphs) parser. Implies glr_parser. */
+
+extern bool graph_glr_parser;
+
 /* NONDETERMINISTIC_PARSER is true iff conflicts are accepted.  This
-   is used by the GLR parser, and might be used in BackTracking
+   is used by GLR parsers, and might be used in BackTracking
    parsers too.  */
 
 extern bool nondeterministic_parser;
