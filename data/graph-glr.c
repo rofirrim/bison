@@ -187,7 +187,8 @@ m4_define([b4_shared_declarations],
 # The header file.  #
 # ----------------- #
 
-b4_output_begin([b4_spec_defines_file])
+b4_defines_if(
+[b4_output_begin([b4_spec_defines_file])
 b4_copyright([Skeleton interface for Bison GLR parsers in C],
              [2002-2015])[
 
@@ -195,13 +196,14 @@ b4_copyright([Skeleton interface for Bison GLR parsers in C],
 ]b4_shared_declarations[
 ]b4_cpp_guard_close([b4_spec_defines_file])[
 ]b4_output_end()
+])
 
 # ------------------------- #
 # The implementation file.  #
 # ------------------------- #
 
 b4_output_begin([b4_parser_file_name])
-b4_copyright([Skeleton implementation for Bison GLR parsers in C],
+b4_copyright([Skeleton implementation for Bison Graph GLR parsers in C],
              [2002-2015])[
 
 /* C GLR parser skeleton written by Paul Hilfinger.  */
