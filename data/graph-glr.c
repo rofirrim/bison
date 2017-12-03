@@ -1237,7 +1237,7 @@ static inline void path_queue_init(void)
     path_queue.tail = NULL;
 }
 
-static inline bool path_queue_is_empty(void)
+static inline yybool path_queue_is_empty(void)
 {
     return path_queue.tail == NULL;
 }
@@ -1311,13 +1311,13 @@ static inline void compute_paths_rec(
         if (contains_link != NULL)
         {
             // We have to check if the current path contains the link
-            bool found = false;
+            yybool found = yyfalse;
             path_predecessor_t* it = &p;
             while (it != NULL)
             {
                 if (it->edge == contains_link)
                 {
-                    found = true;
+                    found = yytrue;
                     break;
                 }
 
@@ -1575,7 +1575,7 @@ static inline void print_single_payload(payload_t* p, int level)
                 break;
             }
         default:
-            YYASSERT(false);
+            YYASSERT(yyfalse);
     }
 }
 
@@ -2436,7 +2436,7 @@ static inline YYSTYPE get_yyval_of_payload(payload_t* p)
         case P_DEFINITIVE_REDUCE:
             return p->r.yyval;
         default:
-            YYASSERT(false);
+            YYASSERT(yyfalse);
     }
 }
 
@@ -2451,7 +2451,7 @@ static inline void set_yyval_of_payload(payload_t* p, YYSTYPE yyval)
             p->r.yyval = yyval;
             break;
         default:
-            YYASSERT(false);
+            YYASSERT(yyfalse);
     }
 }
 
@@ -2466,7 +2466,7 @@ static inline YYLTYPE get_yyloc_of_payload(payload_t* p)
         case P_DEFINITIVE_REDUCE:
             return p->r.yyloc;
         default:
-            YYASSERT(false);
+            YYASSERT(yyfalse);
     }
 }
 
@@ -2530,7 +2530,7 @@ static inline void evaluate_single_payload(payload_t* d]b4_user_formals[)
         case P_DEFINITIVE_REDUCE:
             break;
         default:
-            YYASSERT(false);
+            YYASSERT(yyfalse);
     }
 }
 
@@ -2686,6 +2686,9 @@ static void destroy_pools(void)
 
 static inline void report_syntax_error(int token]b4_user_formals[)
 {
+#if ! YYERROR_VERBOSE
+  yyerror (]b4_lyyerror_args[YY_("syntax error"));
+#else
     const char *token_desc = yytokenName(token);
 
     size_t length_token_name = yytnamerr(YY_NULLPTR, token_desc);
@@ -2701,6 +2704,8 @@ static inline void report_syntax_error(int token]b4_user_formals[)
     yyerror (]b4_lyyerror_args[message);
 
     YYFREE(message);
+#endif /* YYERROR_VERBOSE */
+  yynerrs += 1;
 }
 
 ]b4_function_define([yyparse], [int], b4_parse_param)[
@@ -2777,12 +2782,10 @@ b4_dollar_popdef])[]dnl
     {
         if (gss->stack->preds != NULL)
             evaluate_payload(gss->stack->preds->edge->payload]b4_user_args[);
-        fprintf(stderr, "Parse OK\n");
         yyresult = 0;
     }
     else
     {
-        fprintf(stderr, "Parse failed\n");
         yyresult = 1;
     }
 
